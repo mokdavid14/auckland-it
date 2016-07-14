@@ -123,7 +123,7 @@ app.service('Creator', function($http, esriLoader){
 				// });
 
 				location.symbol = new PictureMarkerSymbol({
-				  "url": "http://www.clker.com/cliparts/e/3/F/I/0/A/google-maps-marker-for-residencelamontagne-th.png",
+				  "url": "marker.png",
 				  "width": 11,
 				  "height": 18,
 					"type":"esriPMS"
