@@ -13,6 +13,9 @@
 		<link rel="stylesheet" href="https://js.arcgis.com/3.16/esri/css/esri.css">
 		<script src="https://js.arcgis.com/3.16/"></script>
 
+		<!-- load website CSS -->
+  		<link rel="stylesheet" href="custom.css">
+
 		<!-- load AngularJS -->
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
 		
@@ -25,14 +28,52 @@
 
 	</head>
 	<body ng-app="myApp">
-		<div class="container" ng-controller="MainController">
+		<div id="mainController" class="container" ng-controller="MainController">
+
+			<!-- Details -->
 			<div class="row">
-				<div id="mapContainer" class="col-lg-10 col-lg-offset-1" style="margin-bottom: 20px; height: 450px">
+			  	<div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2">
+
+			  		<!-- Titles -->
+			    	<h1 class="text-center hidden-xs">Auckland IT Companies</h1>
+			    
+				    <div id="title-xs" class="visible-xs-block">
+				      <h3 class="visible-xs-inline">Auckland IT Companies</h3>
+				      <button type="button" class="close" popover-trigger="outsideClick" uib-popover="{{ description }}" popover-placement="bottom-right"><span aria-hidden="true" class="glyphicon glyphicon-question-sign"></span></button>
+				    </div>
+			    	<p class="hidden-xs">{{ description }}</p>
+
+			    	<!-- Esri Attributes -->
+				    <div id="details" ng-class={'contents' : showForm}>
+					    <div id="instruct-alert" class="alert alert-info text-center" role="alert" ng-class="{ 'isVisible': !showForm, 'isNotVisible': showForm }">
+					        <span>Click on the <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> Markers on the Viewer to learn what company is where</span>
+					    </div>
+					    <form id="esriForm" class="form-horizontal" ng-class="{ 'isVisible': showForm, 'isNotVisible': !showForm }">
+					      <div class="form-group">
+					        <label class="col-sm-2 control-label">Name</label>
+					        <div class="col-sm-10">
+					          <p id="esriNameText" class="form-control-static">{{ nameText }}</p>
+					        </div>
+					      </div>
+					      <div class="form-group">
+					        <label for="inputPassword" class="col-sm-2 control-label">Address</label>
+					        <div class="col-sm-10">
+					          <p id="esriAddressText" class="form-control-static" >{{ addressText }}</p>
+					        </div>
+					      </div>
+					    </form>
+				  	</div>
+			  	</div>
+			</div>
+
+			<div class="row">
+				<div id="mapContainer" class="col-lg-10 col-lg-offset-1">
 					 <esri-map id="map" register-as="demoMap">
 						 <esri-dynamic-map-service-layer url="https://services.arcgisonline.co.nz/arcgis/rest/services/Generic/newzealand/MapServer" visible="true" layer-options="{ spatialReference: {wkid: 102100} }"></esri-dynamic-map-service-layer>
 					</esri-map>
 				</div>
 			</div>
+
 		</div>
 	</body>
 </html>

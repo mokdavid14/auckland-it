@@ -1,0 +1,68 @@
+/* Overall */
+body{
+  background-image: url('cogs.png');
+}
+.isVisible{
+  /*visibility: visible;*/
+  display: block;
+}
+.isNotVisible{
+  /*visibility: hidden;*/
+  display: none;
+}
+
+/* Container */
+#mainController{
+  margin-top: 20px; 
+  margin-bottom: 20px; 
+  padding-top: 10px;
+  padding-bottom: 10px; 
+  background-color: #f8f8f8; 
+  opacity: 0.9; 
+}
+@media screen and (min-width: 768px){
+  #mainController{
+    border-radius: 31px; 
+  }
+}
+#title-xs {
+  margin-bottom: 10px;
+}
+
+/*#details.contents{
+  -webkit-transition: height 2s, transform 2s;
+}*/
+/*style="border: 1px solid black" */
+
+/* Details Form */
+@media screen and (max-width: 767px){
+  #details{
+    min-height: 142px;
+  }
+}
+#instruct-alert{
+  margin-top: 6px;
+}
+@media screen and (max-width: 767px){
+  #instruct-alert{
+    padding-top: 37px; 
+    padding-bottom: 37px; 
+  }
+}
+#esriForm{
+  margin-bottom: 10px;
+}
+.form-group{
+  margin-bottom: 0;
+}
+@media screen and (max-width: 767px){
+  .form-control-static{
+    padding-top: 0;
+  }
+}
+
+/* Map */
+#mapContainer{
+  height: 450px; 
+  opacity: 1.0;
+}

@@ -8,6 +8,11 @@ app.controller('MainController', function($scope, $q, esriLoader, Mapper, Creato
 			'esri/geometry/Extent'
 		], function(Map, FeatureLayer, SpatialReference, Extent) {
 
+		$scope.nameText = "";
+        $scope.addressText = "";
+        $scope.showForm = false;
+        $scope.description = "Welcome to my GIS Demo. Here, the Esri ArcGIS for JavaScript API will pull spatial data relating to numerous IT companies and display them onto the Map Viewer below.";
+
 		Mapper.then(function(data){
 			$scope.mapView = data;
 			$scope.mapView.setExtent(new Extent(19444805.215987768, -4423667.31188955, 19462767.91763476, -4416023.609061042, new SpatialReference(102100)));   
@@ -32,7 +37,12 @@ app.controller('MainController', function($scope, $q, esriLoader, Mapper, Creato
 					});
 					coordLayer.on("mouse-down", function(evt){
 						$scope.mapView.centerAt(evt.mapPoint);
-						parent.access(evt.graphic.attributes);
+						// parent.access(evt.graphic.attributes);
+						$scope.nameText = evt.graphic.attributes.name;
+		                $scope.addressText = evt.graphic.attributes.address;
+
+		                if ($scope.showForm == false)
+		                    $scope.showForm = true;
 					});
 					coordLayer.on("mouse-out", function(evt){
 						$scope.mapView.setMapCursor("default");
